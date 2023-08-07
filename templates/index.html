@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encuesta PaqExpress</title>
+    <!-- Agrega los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Agrega tu archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            padding: 50px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Agrega la imagen de la empresa -->
+        <img class="company-logo" src="{{ url_for('static', filename='images/Logo_paqexpress.png') }}" alt="Logo de la empresa de paquetería">
+        <h1>Encuesta PaqExpress</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="delivery_experience">¿Cómo ha sido tu experiencia con la entrega de paquetes?</label>
+                <select class="form-control" id="delivery_experience" name="delivery_experience" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Mala">Mala</option>
+                    <option value="Buena">Buena</option>
+                    <option value="Muy Buena">Muy Buena</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="delivery_punctuality">¿Cómo calificarías la puntualidad de las entregas?</label>
+                <select class="form-control" id="delivery_punctuality" name="delivery_punctuality" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Mala">Mala</option>
+                    <option value="Buena">Buena</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="delivery_information">¿La información proporcionada sobre el estado de tus envíos ha sido clara y oportuna?</label>
+                <select class="form-control" id="delivery_information" name="delivery_information" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="delivery_staff">¿El personal de entrega ha sido amable y profesional?</label>
+                <select class="form-control" id="delivery_staff" name="delivery_staff" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="package_security">¿Hemos cumplido con tus expectativas en cuanto a la seguridad de tus paquetes?</label>
+                <select class="form-control" id="package_security" name="package_security" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="improvement_suggestions">¿Qué aspectos crees que podríamos mejorar para brindarte una mejor experiencia?</label>
+                <select class="form-control" id="improvement_suggestions" name="improvement_suggestions" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Seguridad del paquete">Seguridad del paquete</option>
+                    <option value="Atencion al cliente">Atención al cliente</option>
+                    <option value="Seguimiento del paquete">Seguimiento del paquete</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="recommendation">¿Recomendarías nuestros servicios de paquetería a otras personas?</label>
+                <select class="form-control" id="recommendation" name="recommendation" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="negative_experience">¿Has tenido una experiencia negativa con nuestros servicios?</label>
+                <select class="form-control" id="negative_experience" name="negative_experience" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="negative_details">¿Si es así, ¿puedes proporcionar más detalles?</label>
+                <textarea class="form-control" id="negative_details" name="negative_details" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
